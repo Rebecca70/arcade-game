@@ -38,6 +38,7 @@ Enemy.prototype.render = function() {
 var Player = function(x, y) {
   this.x = x;
   this.y = y;
+  this.lifes = 3;
   this.width = 50;
   this.heigt = 50;
   this.sprite = "images/char-horn-girl.png";
@@ -81,8 +82,7 @@ Player.prototype.handleInput = function (movement) {
 /* Prototype function to check if collision between
    Player and Enemy occured */
 Player.prototype.checkCollisions = function () {
-  for(var i = 0 ; i < 3 ; i++)
-  {
+  for(var i = 0 ; i < 3 ; i++)  {
   if ((this.x < allEnemies[i].x + 50) &&
       (this.x + 50 > allEnemies[i].x) &&
       (this.y < allEnemies[i].y + 50) &&
@@ -90,7 +90,19 @@ Player.prototype.checkCollisions = function () {
        {
         this.x = 200;
         this.y = 300;
-       }
+        this.lifes -= 1;
+          if (this.lifes >= 0) {
+            allLifes.pop();
+            console.log (allLifes.length);
+          if (this.lifes === 0) {
+            allGameover.push(gameover);
+            gameover.update();
+            console.log ("Game Over!!")
+
+          }
+            break;
+          }
+        }
   }
 };
 
@@ -105,7 +117,8 @@ var Life = function(x, y) {
 var life1 = new Life (20, 500);
 var life2 = new Life (70, 500);
 var life3 = new Life (120, 500);
-
+//var life4 = new Life (170, 500);
+//var life5 = new Life (220, 500);
 /* List of all available lifes */
 var allLifes = [life1, life2, life3];
 
@@ -114,14 +127,20 @@ Life.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-/* TODO: Prototype function to remove lifes upon collision */
-Life.prototype.update = function(count) {
-  var count = 3;
-  if (Player.checkCollisions === true) {
-    count -= 1;
-  }
-
+var Gameover = function (x, y) {
+  this.x = 100;
+  this.y = 100;
+  this.sprite = "images/game_over.png"
 };
+
+var gameover = new Gameover (100, 100);
+
+var allGameover = [];
+
+Gameover.prototype.update = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
