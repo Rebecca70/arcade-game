@@ -83,6 +83,8 @@ var Engine = (function(global) {
 
 
 
+
+
     }
 
     /* This is called by the update function and loops through all of the
@@ -165,6 +167,10 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+
+
+        gameover.render();
 
 
 

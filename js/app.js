@@ -93,13 +93,6 @@ Player.prototype.checkCollisions = function () {
         this.lifes -= 1;
           if (this.lifes >= 0) {
             allLifes.pop();
-            console.log (allLifes.length);
-          if (this.lifes === 0) {
-            allGameover.push(gameover);
-            gameover.update();
-            console.log ("Game Over!!")
-
-          }
             break;
           }
         }
@@ -117,8 +110,7 @@ var Life = function(x, y) {
 var life1 = new Life (20, 500);
 var life2 = new Life (70, 500);
 var life3 = new Life (120, 500);
-//var life4 = new Life (170, 500);
-//var life5 = new Life (220, 500);
+
 /* List of all available lifes */
 var allLifes = [life1, life2, life3];
 
@@ -128,17 +120,17 @@ Life.prototype.render = function() {
 };
 
 var Gameover = function (x, y) {
-  this.x = 100;
-  this.y = 100;
+  this.x = 150;
+  this.y = 200;
   this.sprite = "images/game_over.png"
 };
 
 var gameover = new Gameover (100, 100);
 
-var allGameover = [];
-
-Gameover.prototype.update = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+Gameover.prototype.render = function() {
+  if (player.lifes <= 0) {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
 };
 
 
