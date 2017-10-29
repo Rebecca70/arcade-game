@@ -1,11 +1,11 @@
 /* General instance of variable Enemy */
 var Enemy = function(x, y, speed) {
-    this.x = x;
-    this.y = y;
-    this.width = 50;
-    this.height = 50;
-    this.speed = speed;
-    this.sprite = 'images/enemy-bug.png';
+  this.x = x;
+  this.y = y;
+  this.width = 50;
+  this.height = 50;
+  this.speed = speed;
+  this.sprite = 'images/enemy-bug.png';
 };
 
 /* Single Enemy start position and speed */
@@ -19,19 +19,18 @@ var allEnemies = [enemy1, enemy2, enemy3];
 /* Prototype function to move Enemies;
    Parameter 'dt': a time delta between ticks*/
 Enemy.prototype.update = function(dt) {
-    /* Determines general speed of enemies. */
-    this.x += this.speed*dt;
-    /* Enemies to re-appear on left side after having
-       wanished on right side */
-    if (this.x > 500) {
-      this.x = -150;
-    }
-
+  /* Determines general speed of enemies. */
+  this.x += this.speed*dt;
+  /* Enemies to re-appear on left side after having
+     wanished on right side */
+  if (this.x > 500) {
+    this.x = -150;
+  }
 };
 
 /* Prototype function to draw Enemies on board */
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 /* General instance of variable Player */
@@ -51,7 +50,7 @@ var player = new Player (200, 300);
    either upon reaching the water or having had a collision
    with an Enemy */
 Player.prototype.update = function() {
-  if (this.y < -11) {
+  if (this.y <= -11) {
     this.x = 200;
     this.y = 300;
   }
@@ -83,19 +82,18 @@ Player.prototype.handleInput = function (movement) {
    Player and Enemy occured */
 Player.prototype.checkCollisions = function () {
   for(var i = 0 ; i < 3 ; i++)  {
-  if ((this.x < allEnemies[i].x + 50) &&
+    if ((this.x < allEnemies[i].x + 50) &&
       (this.x + 50 > allEnemies[i].x) &&
       (this.y < allEnemies[i].y + 50) &&
       (50 + this.y > allEnemies[i].y))
-       {
-        this.x = 200;
-        this.y = 300;
-        this.lifes -= 1;
-          if (this.lifes >= 0) {
-            allLifes.pop();
-            break;
-          }
-        }
+      {
+      this.x = 200;
+      this.y = 300;
+      this.lifes -= 1;
+    if (this.lifes >= 0) {
+      allLifes.pop();
+      }
+    }
   }
 };
 
@@ -119,30 +117,32 @@ Life.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+/* General instance of variable Gameover */
 var Gameover = function (x, y) {
   this.x = 150;
   this.y = 200;
   this.sprite = "images/game_over.png"
 };
 
+/* Determines position of pop up 'Game over' */
 var gameover = new Gameover (100, 100);
 
+/* Prototype function which controls behaviour of pop up 'Game over' */
 Gameover.prototype.render = function() {
   if (player.lifes <= 0) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 };
 
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+};
 
-    player.handleInput(allowedKeys[e.keyCode]);
+player.handleInput(allowedKeys[e.keyCode]);
 });

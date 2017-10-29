@@ -1,6 +1,20 @@
-frontend-nanodegree-arcade-game
-===============================
+# Udacity Project - Frontend Nanodegree - Arcade Game
+<hr>
+## Installation
+In order to play this game, please follow these instructions:
+- copy or clone the **complete** repository and save it to your device
+- open the file **index.html** in your browser
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+<hr>
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Play the game
+### Goal
+The goal of the game is to reach the water (blue tiles) without being hit by one of the bugs.
+### Moving the Player
+Use the arrow keys on your keyboard to move the player up, down, right or left.
+### Upon reaching water
+If you reach the water without any collision the player will reset automatically to the starting position and you can try to cross the stone path again.
+### Collision and Lifes
+You have a total of 3 lifes (hearts). Each time you collide with a bug, you loose one life. Once you have no lifes left, the game is over.
+### Restart the Game
+To restart the game, press the refresh button in your browser window.
