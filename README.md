@@ -10,7 +10,7 @@ In order to play this game, please follow these instructions:
 The goal of the game is to reach the water (blue tiles) without being hit by one of the bugs.
 ### Moving the Player
 Use the arrow keys on your keyboard to move the player up, down, right or left.
-### Upon reaching water
+### Upon reaching Water
 If you reach the water without any collision the player will reset automatically to the starting position and you can try to cross the stone path again.
 ### Collision and Lifes
 You have a total of 3 lifes (hearts). Each time you collide with a bug, you loose one life. Once you have no lifes left, the game is over.
