@@ -2,7 +2,7 @@
 
 ## Installation
 In order to play this game, please follow these instructions:
-- copy or clone the **complete** repository and save it to your device
+- download or clone the **complete** repository and save it to your device
 - open the file **index.html** in your browser
 
 ## Play the game
